@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hesap_makinesi/constants/app_colors.dart';
+import 'package:hesap_makinesi/viewModel/calculator_view_model.dart';
 import 'package:hesap_makinesi/widgets/calculator_button.dart';
 
 class CalculatorView extends StatefulWidget {
@@ -10,9 +11,7 @@ class CalculatorView extends StatefulWidget {
 }
 
 class _CalculatorViewState extends State<CalculatorView> {
-  double displayText = 0;
-  int firstnumber = 0;
-  
+  final viewModel = CalculatorViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,7 @@ class _CalculatorViewState extends State<CalculatorView> {
                 child: Row(
                   children: [
                     Text(
-                      "$displayText",
+                      viewModel.displayText,
                       style: TextStyle(
                         color: AppColors.yaziRenk,
                         fontSize: 32,
@@ -59,7 +58,12 @@ class _CalculatorViewState extends State<CalculatorView> {
                         CalculatorButton(
                           text: "C",
                           color: AppColors.buttonArkaplan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.clearAll();
+                            setState(() {
+                              
+                            });
+                          },
                         ),
                         CalculatorButton(
                           text: "%",
@@ -78,22 +82,35 @@ class _CalculatorViewState extends State<CalculatorView> {
                         CalculatorButton(
                           text: "7",
                           color: AppColors.yaziArkaPlan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.numberPressed("7");
+                            setState(() {});
+                          },
                         ),
                         CalculatorButton(
                           text: "8",
                           color: AppColors.yaziArkaPlan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.numberPressed("8");
+
+                            setState(() {});
+                          },
                         ),
                         CalculatorButton(
                           text: "9",
                           color: AppColors.yaziArkaPlan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.numberPressed("9");
+                            setState(() {});
+                          },
                         ),
                         CalculatorButton(
                           text: "x",
                           color: AppColors.buttonArkaplan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.operationPressed("*");
+                            setState(() {});
+                          },
                         ),
                       ],
                     ),
@@ -102,22 +119,34 @@ class _CalculatorViewState extends State<CalculatorView> {
                         CalculatorButton(
                           text: "6",
                           color: AppColors.yaziArkaPlan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.numberPressed("6");
+                            setState(() {});
+                          },
                         ),
                         CalculatorButton(
                           text: "5",
                           color: AppColors.yaziArkaPlan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.numberPressed("5");
+                            setState(() {});
+                          },
                         ),
                         CalculatorButton(
                           text: "4",
                           color: AppColors.yaziArkaPlan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.numberPressed("4");
+                            setState(() {});
+                          },
                         ),
                         CalculatorButton(
                           text: "-",
                           color: AppColors.buttonArkaplan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.operationPressed("-");
+                            setState(() {});
+                          },
                         ),
                       ],
                     ),
@@ -126,22 +155,34 @@ class _CalculatorViewState extends State<CalculatorView> {
                         CalculatorButton(
                           text: "1",
                           color: AppColors.yaziArkaPlan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.numberPressed("1");
+                            setState(() {});
+                          },
                         ),
                         CalculatorButton(
                           text: "2",
                           color: AppColors.yaziArkaPlan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.numberPressed("2");
+                            setState(() {});
+                          },
                         ),
                         CalculatorButton(
                           text: "3",
                           color: AppColors.yaziArkaPlan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.numberPressed("3");
+                            setState(() {});
+                          },
                         ),
                         CalculatorButton(
                           text: "+",
                           color: AppColors.buttonArkaplan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.operationPressed("+");
+                            setState(() {});
+                          },
                         ),
                       ],
                     ),
@@ -155,7 +196,10 @@ class _CalculatorViewState extends State<CalculatorView> {
                         CalculatorButton(
                           text: "0",
                           color: AppColors.yaziArkaPlan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.numberPressed("0");
+                            setState(() {});
+                          },
                         ),
                         CalculatorButton(
                           text: ",",
@@ -165,7 +209,10 @@ class _CalculatorViewState extends State<CalculatorView> {
                         CalculatorButton(
                           text: "=",
                           color: AppColors.buttonArkaplan,
-                          onTap: () {},
+                          onTap: () {
+                            viewModel.calculateResult();
+                            setState(() {});
+                          },
                         ),
                       ],
                     ),
